@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsq2kwmykot4l"]
+
+[ext_resource type="Script" path="res://scenes/emerald.gd" id="1_00ls3"]
+[ext_resource type="Texture2D" uid="uid://dno3fdquuexat" path="res://01.png" id="1_l3ueo"]
+[ext_resource type="Texture2D" uid="uid://cv2ry0xw4quss" path="res://02.png" id="2_0sdd5"]
+[ext_resource type="Texture2D" uid="uid://bqh1s8ys4q5r0" path="res://03.png" id="3_lu038"]
+[ext_resource type="Texture2D" uid="uid://bke26jhd17ung" path="res://04.png" id="4_826hc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhjpr"]
+size = Vector2(39.5, 42.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u4vrb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l3ueo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0sdd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lu038")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_826hc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_00ls3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bhjpr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3.05176e-05, 0)
+scale = Vector2(3.08333, 3.08333)
+sprite_frames = SubResource("SpriteFrames_u4vrb")
+autoplay = "default"
+frame_progress = 0.104873
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

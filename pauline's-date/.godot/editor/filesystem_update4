@@ -1,0 +1,6 @@
+res://main.tscn
+res://scenes/main_char.tscn
+res://scenes/main_char.gd
+res://scenes/emerald.tscn
+res://scenes/emerald.gd
+res://game_manager.gd

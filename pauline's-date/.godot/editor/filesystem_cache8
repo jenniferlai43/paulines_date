@@ -1,3 +1,17 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1731294342
-icon.svg::CompressedTexture2D::2206408209789595078::1731294335::1731294343::1::::<><>::
+::res://::1732688718
+01.png::CompressedTexture2D::8102327494920086607::1732688694::1732688694::1::::<><>::
+02.png::CompressedTexture2D::6303621680728484374::1732688718::1732688718::1::::<><>::
+03.png::CompressedTexture2D::3525505383485370083::1732688718::1732688718::1::::<><>::
+04.png::CompressedTexture2D::3098261833201524816::1732688718::1732688718::1::::<><>::
+Green.png::CompressedTexture2D::13241768220346868::1732151964::1732151964::1::::<><>::
+icon.svg::CompressedTexture2D::2206408209789595078::1731294941::1731295760::1::::<><>::
+Idle (32x32).png::CompressedTexture2D::1733293439704544037::1732684795::1732684795::1::::<><>::
+Jump (32x32).png::CompressedTexture2D::5164437975653786231::1732684878::1732684127::1::::<><>::
+main.tscn::PackedScene::1053372888583894373::1732688185::0::1::::<><>::uid://godca5elcau::::res://Green.png<>uid://dg60t3rde1m4h::::res://Terrain (16x16).png<>uid://bqjgref8eybub::::res://scenes/main_char.tscn<>res://scenes/main_char.gd
+mc.tscn::PackedScene::8009809655291319704::1732684280::0::1::::<><>::uid://cftxsk86emgmh::::res://Jump (32x32).png
+Run (32x32).png::CompressedTexture2D::7487314468097757415::1732684944::1732684944::1::::<><>::
+Terrain (16x16).png::CompressedTexture2D::7645944175244872641::1732152043::1732152043::1::::<><>::
+::res://scenes/::1732688185
+main_char.tscn::PackedScene::3528416461464221325::1732688185::0::1::::<><>::uid://yxvdbye3tq5r::::res://Idle (32x32).png<>uid://cftxsk86emgmh::::res://Jump (32x32).png<>uid://dew58fsknfax8::::res://Run (32x32).png
+main_char.gd::GDScript::-1::1732685488::0::1::::<>CharacterBody2D<>::
