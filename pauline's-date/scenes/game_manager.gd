@@ -8,6 +8,3 @@ func add_points():
 	points += 1
 	print(points)
 	points_label.text = "Flowers: " + str(points)
-
-func open_chat():
-	pass

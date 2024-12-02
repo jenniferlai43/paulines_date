@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drgin0xkju7vq"]
+[gd_scene load_steps=14 format=3 uid="uid://drgin0xkju7vq"]
 
 [ext_resource type="Texture2D" uid="uid://p245sstxby6f" path="res://mc_idle.png" id="1_aeon2"]
 [ext_resource type="Script" path="res://scenes/mc_npc.gd" id="1_u0qgs"]
@@ -60,8 +60,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qysln"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkmsa"]
-size = Vector2(64, 85)
+size = Vector2(64, 86)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1syjr"]
+radius = 83.6002
 
 [node name="mc_npc" type="Area2D"]
 script = ExtResource("1_u0qgs")
@@ -76,8 +81,18 @@ frame = 4
 frame_progress = 0.352231
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 1.5)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_qysln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-4, 1)
 shape = SubResource("RectangleShape2D_vkmsa")
 
+[node name="CollisionShape2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D"]
+shape = SubResource("CircleShape2D_1syjr")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="CollisionShape2D" to="." method="_on_collision_shape_2d_body_entered"]
+[connection signal="body_exited" from="CollisionShape2D" to="." method="_on_collision_shape_2d_body_exited"]
