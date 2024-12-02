@@ -1,4 +1,5 @@
-res://scenes/main_char.tscn
-res://scenes/main_char.gd
 res://main.tscn
+res://scenes/main_char.tscn
 res://scenes/emerald.tscn
+res://scenes/mc_npc.tscn
+res://scenes/mc_npc.gd

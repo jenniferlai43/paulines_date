@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bke26jhd17ung"
-path="res://.godot/imported/04.png-322040cf566cd72f2fe8e4a891d054d1.ctex"
+uid="uid://i6leni2sfow5"
+path="res://.godot/imported/pauline_flower.png-a8919ccea3eb695c4c75023264d748fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://04.png"
-dest_files=["res://.godot/imported/04.png-322040cf566cd72f2fe8e4a891d054d1.ctex"]
+source_file="res://pauline_flower.png"
+dest_files=["res://.godot/imported/pauline_flower.png-a8919ccea3eb695c4c75023264d748fb.ctex"]
 
 [params]
 

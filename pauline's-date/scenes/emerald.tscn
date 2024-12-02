@@ -1,31 +1,69 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsq2kwmykot4l"]
+[gd_scene load_steps=13 format=3 uid="uid://bsq2kwmykot4l"]
 
 [ext_resource type="Script" path="res://scenes/emerald.gd" id="1_00ls3"]
-[ext_resource type="Texture2D" uid="uid://dno3fdquuexat" path="res://01.png" id="1_l3ueo"]
-[ext_resource type="Texture2D" uid="uid://cv2ry0xw4quss" path="res://02.png" id="2_0sdd5"]
-[ext_resource type="Texture2D" uid="uid://bqh1s8ys4q5r0" path="res://03.png" id="3_lu038"]
-[ext_resource type="Texture2D" uid="uid://bke26jhd17ung" path="res://04.png" id="4_826hc"]
+[ext_resource type="Texture2D" uid="uid://i6leni2sfow5" path="res://pauline_flower.png" id="6_4shvc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhjpr"]
 size = Vector2(39.5, 42.5)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k41jk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hqjys"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a7i0d"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jq2m7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iwdq"]
+atlas = ExtResource("6_4shvc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh608"]
+atlas = ExtResource("6_4shvc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou1w4"]
+atlas = ExtResource("6_4shvc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt2rn"]
+atlas = ExtResource("6_4shvc")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u4vrb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_l3ueo")
+"texture": SubResource("CompressedTexture2D_k41jk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_0sdd5")
+"texture": SubResource("CompressedTexture2D_hqjys")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_lu038")
+"texture": SubResource("CompressedTexture2D_a7i0d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_826hc")
+"texture": SubResource("CompressedTexture2D_jq2m7")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iwdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh608")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou1w4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt2rn")
+}],
+"loop": true,
+"name": &"flower_default",
 "speed": 5.0
 }]
 
@@ -39,9 +77,10 @@ shape = SubResource("RectangleShape2D_bhjpr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(3.05176e-05, 0)
-scale = Vector2(3.08333, 3.08333)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_u4vrb")
-autoplay = "default"
-frame_progress = 0.104873
+animation = &"flower_default"
+autoplay = "flower_default"
+frame_progress = 0.480496
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

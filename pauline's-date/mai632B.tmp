@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://pai5rukfbmev"]
+[gd_scene load_steps=11 format=3 uid="uid://pai5rukfbmev"]
 
 [ext_resource type="Texture2D" uid="uid://godca5elcau" path="res://Green.png" id="1_nlrvd"]
 [ext_resource type="Texture2D" uid="uid://dg60t3rde1m4h" path="res://Terrain (16x16).png" id="2_w2y3h"]
 [ext_resource type="PackedScene" uid="uid://bqjgref8eybub" path="res://scenes/main_char.tscn" id="3_d2kja"]
 [ext_resource type="Script" path="res://scenes/main_char.gd" id="4_3f2ad"]
 [ext_resource type="PackedScene" uid="uid://bsq2kwmykot4l" path="res://scenes/emerald.tscn" id="5_il0qu"]
+[ext_resource type="Script" path="res://game_manager.gd" id="6_vx5jn"]
 [ext_resource type="PackedScene" uid="uid://drgin0xkju7vq" path="res://scenes/mc_npc.tscn" id="7_a2gw3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n04t3"]
@@ -180,6 +181,7 @@ bg_color = Color(0.143467, 0.305386, 0.164183, 1)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
+script = ExtResource("6_vx5jn")
 
 [node name="scene_objects" type="Node" parent="."]
 
@@ -248,6 +250,7 @@ position = Vector2(1979, 377)
 
 [node name="mc_npc" parent="scene_objects/mc" instance=ExtResource("7_a2gw3")]
 position = Vector2(2401, 193)
+script = null
 
 [node name="mc_dialogue" type="Control" parent="scene_objects/mc"]
 layout_mode = 3
