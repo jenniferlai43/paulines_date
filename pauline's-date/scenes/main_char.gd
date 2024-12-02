@@ -8,14 +8,14 @@ const JUMP_VELOCITY = -700.0
 
 func _physics_process(delta: float) -> void:
 	if (velocity.x > 1 || velocity.x < -1):
-		sprite_2d.animation = "running"	
+		sprite_2d.animation = "pauline_running"	
 	else:
-		sprite_2d.animation = "default"
+		sprite_2d.animation = "pauline_idle"
 	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		sprite_2d.animation = "jumping"
+		sprite_2d.animation = "pauline_jump"
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
