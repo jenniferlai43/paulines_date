@@ -65,8 +65,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkmsa"]
 size = Vector2(64, 86)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1syjr"]
-radius = 83.6002
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ackhk"]
+size = Vector2(99, 231.5)
 
 [node name="mc_npc" type="Area2D"]
 script = ExtResource("1_u0qgs")
@@ -91,7 +91,8 @@ shape = SubResource("RectangleShape2D_vkmsa")
 [node name="CollisionShape2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D"]
-shape = SubResource("CircleShape2D_1syjr")
+position = Vector2(-14, -71.25)
+shape = SubResource("RectangleShape2D_ackhk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="CollisionShape2D" to="." method="_on_collision_shape_2d_body_entered"]

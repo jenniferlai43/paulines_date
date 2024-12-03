@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bsq2kwmykot4l"]
 
-[ext_resource type="Script" path="res://scenes/emerald.gd" id="1_00ls3"]
+[ext_resource type="Script" path="res://scenes/tulip.gd" id="1_00ls3"]
 [ext_resource type="Texture2D" uid="uid://i6leni2sfow5" path="res://pauline_flower.png" id="6_4shvc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhjpr"]
