@@ -19,13 +19,25 @@ func add_points():
 		1:
 			points_label.text = "Coins: " + str(points)
 
+func go_to_main_menu():
+	PlayerState.level = 0
+	SceneTransition.change_scene("res://scenes/main_menu.tscn")
+
+func switch_to_level_0():
+	PlayerState.level = 0
+	SceneTransition.change_scene("res://scenes/level0.tscn")
+
 func switch_to_level_1():
 	PlayerState.level = 1
-	get_tree().call_deferred("change_scene_to_file", "res://level1.tscn")
+	SceneTransition.change_scene("res://scenes/level1.tscn")
 	
 func switch_to_level_2():
 	PlayerState.level = 2
-	get_tree().call_deferred("change_scene_to_file", "res://level2.tscn")
+	SceneTransition.change_scene("res://scenes/level2.tscn")
+	
+func switch_to_credits():
+	PlayerState.level = 3
+	SceneTransition.change_scene("res://scenes/credits.tscn")
 
 func mark_dialogue_active():
 	dialogue_is_active = true

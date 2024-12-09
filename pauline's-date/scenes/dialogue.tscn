@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmvjn8xyum3yn"]
 
-[ext_resource type="Script" path="res://dialogue.gd" id="1_gxpk2"]
+[ext_resource type="Script" path="res://scenes/dialogue.gd" id="1_gxpk2"]
 [ext_resource type="FontFile" uid="uid://pmgc17ar6k85" path="res://Minecraft.ttf" id="2_jgcjj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbdil"]

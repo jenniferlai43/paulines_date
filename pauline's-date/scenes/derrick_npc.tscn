@@ -1,0 +1,96 @@
+[gd_scene load_steps=14 format=3 uid="uid://txrr1iywh36m"]
+
+[ext_resource type="Script" path="res://scenes/derrick_npc.gd" id="1_pkqbu"]
+[ext_resource type="Texture2D" uid="uid://hdrm8d2nxe3e" path="res://derrick_idle.png" id="2_se8tf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qysln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkmsa"]
+size = Vector2(64, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ackhk"]
+size = Vector2(99, 231.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qojv4"]
+atlas = ExtResource("2_se8tf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky6nc"]
+atlas = ExtResource("2_se8tf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2f83"]
+atlas = ExtResource("2_se8tf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftu2k"]
+atlas = ExtResource("2_se8tf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr61p"]
+atlas = ExtResource("2_se8tf")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvcpg"]
+atlas = ExtResource("2_se8tf")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uey0"]
+atlas = ExtResource("2_se8tf")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4kyo7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qojv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky6nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2f83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftu2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr61p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvcpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uey0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="derrick_npc" type="Area2D"]
+script = ExtResource("1_pkqbu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_qysln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-4, 1)
+shape = SubResource("RectangleShape2D_vkmsa")
+
+[node name="CollisionShape2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D"]
+position = Vector2(-14, -71.25)
+shape = SubResource("RectangleShape2D_ackhk")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.875, 2.875)
+sprite_frames = SubResource("SpriteFrames_4kyo7")
+frame_progress = 0.688103
+flip_h = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="CollisionShape2D" to="." method="_on_collision_shape_2d_body_entered"]
+[connection signal="body_exited" from="CollisionShape2D" to="." method="_on_collision_shape_2d_body_exited"]

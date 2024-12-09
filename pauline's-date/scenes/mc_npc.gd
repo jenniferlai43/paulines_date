@@ -51,7 +51,6 @@ func _lvl1_coins_acquired_cutscene():
 	game_manager.end_cutscene()
 	print("SCENE TO DATE!")
 	game_manager.switch_to_level_2()
-	
 
 func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
 	if (body.name == "pauline_mc"):

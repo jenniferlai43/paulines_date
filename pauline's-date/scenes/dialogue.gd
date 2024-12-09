@@ -16,6 +16,7 @@ func _ready():
 	
 	
 func hide_textbox():
+	text_queue = []
 	start.text = ""
 	text.text = ""
 	textbox_container.hide()

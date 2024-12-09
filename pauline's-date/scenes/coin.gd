@@ -4,7 +4,7 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void: 
 	print("enter")
-	if (body.name == "pauline_mc"):
+	if (body.name.contains("pauline")):
 		print("enter is pauline")
 		queue_free()
 		game_manager.add_points()

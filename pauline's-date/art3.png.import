@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvocwr46dd66s"
-path="res://.godot/imported/pauline_idle.png-5b6f971e23f3ae0decda621d99c9ec3c.ctex"
+uid="uid://cb1ejs4voggxb"
+path="res://.godot/imported/art3.png-1b9b11a5519223b708b795d74c6bdb94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/pauline_idle.png"
-dest_files=["res://.godot/imported/pauline_idle.png-5b6f971e23f3ae0decda621d99c9ec3c.ctex"]
+source_file="res://art3.png"
+dest_files=["res://.godot/imported/art3.png-1b9b11a5519223b708b795d74c6bdb94.ctex"]
 
 [params]
 

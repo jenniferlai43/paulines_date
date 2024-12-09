@@ -1,0 +1,162 @@
+[gd_scene load_steps=14 format=3 uid="uid://cdsbxxv20160r"]
+
+[ext_resource type="Texture2D" uid="uid://b4vyblvf8bv87" path="res://Blue.png" id="1_x8mvw"]
+[ext_resource type="Texture2D" uid="uid://jy7jjp6quuuy" path="res://Big Clouds.png" id="2_qhh5r"]
+[ext_resource type="FontFile" uid="uid://pmgc17ar6k85" path="res://Minecraft.ttf" id="3_f7rui"]
+[ext_resource type="Texture2D" uid="uid://qdeimlgb6lef" path="res://pauline_ui.png" id="4_nwgjy"]
+[ext_resource type="Texture2D" uid="uid://b51cetopnmuqf" path="res://GUI.png" id="5_4gwd2"]
+[ext_resource type="StyleBox" uid="uid://dgyqwr1jijbxf" path="res://scenes/button_press.tres" id="5_s0s3p"]
+[ext_resource type="Script" path="res://scenes/start_button.gd" id="7_3uilq"]
+[ext_resource type="Script" path="res://scenes/game_manager.gd" id="8_3thyb"]
+
+[sub_resource type="Animation" id="Animation_kuadm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("clouds:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 414)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(189, 495)]
+}
+
+[sub_resource type="Animation" id="Animation_3ypr2"]
+resource_name = "up_down-loop"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("clouds:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 414), Vector2(-1, 353.25), Vector2(-1, 414)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.03333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(189, 495), Vector2(189, 430.33), Vector2(189, 495)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7b0be"]
+_data = {
+"RESET": SubResource("Animation_kuadm"),
+"up_down-loop": SubResource("Animation_3ypr2")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1gon"]
+texture = ExtResource("5_4gwd2")
+region_rect = Rect2(145, 113, 46, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i2l75"]
+texture = ExtResource("5_4gwd2")
+region_rect = Rect2(145, 98, 46, 13)
+
+[node name="main_menu" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -164.0
+offset_top = -23.0
+offset_right = 1491.0
+offset_bottom = 699.0
+texture = ExtResource("1_x8mvw")
+
+[node name="bottom_clouds" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="bottom_clouds"]
+z_index = 2
+texture_filter = 1
+position = Vector2(189, 495)
+scale = Vector2(5, 5)
+texture = ExtResource("4_nwgjy")
+
+[node name="clouds" type="TextureRect" parent="bottom_clouds"]
+texture_filter = 1
+offset_left = -1.0
+offset_top = 410.081
+offset_right = 1182.0
+offset_bottom = 708.081
+texture = ExtResource("2_qhh5r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bottom_clouds"]
+libraries = {
+"": SubResource("AnimationLibrary_7b0be")
+}
+autoplay = "up_down-loop"
+
+[node name="gallery_text" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = -136.0
+offset_right = 385.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.449859, 0.529278, 0.628025, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_f7rui")
+theme_override_font_sizes/font_size = 80
+text = "Pauline's Art Gallery"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start_button" type="Button" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = 5.0
+offset_right = 182.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_f7rui")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = ExtResource("5_s0s3p")
+theme_override_styles/hover_pressed = ExtResource("5_s0s3p")
+theme_override_styles/hover = ExtResource("5_s0s3p")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_c1gon")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i2l75")
+text = "START"
+script = ExtResource("7_3uilq")
+
+[node name="game_manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_3thyb")
+
+[connection signal="pressed" from="start_button" to="start_button" method="_on_pressed"]
