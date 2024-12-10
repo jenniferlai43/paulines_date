@@ -4,10 +4,12 @@ extends Area2D
 @onready var dialogue: CanvasLayer = %dialogue
 
 func _ending_cutscene():
+	game_manager.start_cutscene()
 	await dialogue.enqueue_text([
 		"You look gorgeous Pauline!",
 		"Let's check out the rest of this art gallery now :)"].map(func(txt): return "Derrick: %s" % txt))
 	await dialogue.drain_text_queue(2)
+	game_manager.end_cutscene()
 	game_manager.switch_to_credits()
 	
 
