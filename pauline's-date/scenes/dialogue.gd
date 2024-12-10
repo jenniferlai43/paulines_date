@@ -58,5 +58,4 @@ func display_next_text():
 		talking_sound.stop()
 	else:
 		# If no text is left, we can hide the textbox now.
-		print("no text left!")
 		hide_textbox()

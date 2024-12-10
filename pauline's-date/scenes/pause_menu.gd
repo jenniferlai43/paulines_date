@@ -24,27 +24,22 @@ func testEsc():
 		# Cannot pause during a cutscene.
 		return
 	if Input.is_action_just_pressed("esc") && get_tree().paused == false:
-		print("pausing")
-		
 		button_click.play()
 		pause()
 		await button_click.finished
 	elif Input.is_action_just_pressed("esc") && get_tree().paused == true:
-		print("resuming")
 		button_click.play()
 		resume()
 		await button_click.finished
 	
 func _on_resume_pressed() -> void:
 	if can_click_pause_menu:
-		print("pressed resume")
 		button_click.play()
 		await button_click.finished
 		resume()
 	
 func _on_restart_pressed() -> void:
 	if can_click_pause_menu:
-		print("pressed restart")
 		button_click.play()
 		await button_click.finished
 		get_tree().paused = false
@@ -52,7 +47,6 @@ func _on_restart_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	if can_click_pause_menu:
-		print("pressed quit")
 		button_click.play()
 		await button_click.finished
 		get_tree().paused = false

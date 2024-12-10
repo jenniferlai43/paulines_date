@@ -24,9 +24,7 @@ const LVL1_TEXT_LOOP_IDX_TO_TEXT = {
 func _lvl0_flowers_acquired_cutscene():
 	game_manager.start_cutscene()
 	dialogue.enqueue_text(["Minh-Chau: Awesome! You got the flowers. Okay, you better get going before you're late!"])
-	print("Start display text")
 	await dialogue.display_next_text()
-	print("Finished display text")
 	var mc_npc = get_node("Sprite2D")
 	mc_npc.flip_h = not mc_npc.flip_h
 	await get_tree().create_timer(3).timeout
@@ -49,7 +47,6 @@ func _lvl1_coins_acquired_cutscene():
 	mc_npc.flip_h = not mc_npc.flip_h
 	await get_tree().create_timer(2).timeout
 	game_manager.end_cutscene()
-	print("SCENE TO DATE!")
 	game_manager.switch_to_level_2()
 
 func _on_collision_shape_2d_body_entered(body: Node2D) -> void:
