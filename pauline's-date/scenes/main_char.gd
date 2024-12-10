@@ -9,7 +9,6 @@ const JUMP_VELOCITY = -625.0
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_sfx: AudioStreamPlayer = $jump_sfx
 
-
 func _physics_process(delta: float) -> void:
 	
 	if (game_manager.is_cutscene || game_manager.dialogue_is_active):
@@ -51,6 +50,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, 10)
 
 	move_and_slide()
+	
+	if velocity.x == 0:
+		# Don't change direction
+		return
 	
 	var is_left = velocity.x < 0
 	sprite_2d.flip_h = is_left
