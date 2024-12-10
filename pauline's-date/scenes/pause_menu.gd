@@ -6,13 +6,16 @@ extends Control
 @onready var dialogue: CanvasLayer = %dialogue
 @onready var button_click: AudioStreamPlayer = $button_click
 
+var can_click_pause_menu = false
 
 func resume():
 	get_tree().paused = false
+	can_click_pause_menu = false
 	animation_player.play_backwards("blur")
 
 func pause():
 	dialogue.hide_textbox()
+	can_click_pause_menu = true
 	get_tree().paused = true
 	animation_player.play("blur")
 	
@@ -33,24 +36,27 @@ func testEsc():
 		await button_click.finished
 	
 func _on_resume_pressed() -> void:
-	print("pressed resume")
-	button_click.play()
-	await button_click.finished
-	resume()
+	if can_click_pause_menu:
+		print("pressed resume")
+		button_click.play()
+		await button_click.finished
+		resume()
 	
 func _on_restart_pressed() -> void:
-	print("pressed restart")
-	button_click.play()
-	await button_click.finished
-	get_tree().paused = false
-	get_tree().reload_current_scene()
+	if can_click_pause_menu:
+		print("pressed restart")
+		button_click.play()
+		await button_click.finished
+		get_tree().paused = false
+		get_tree().reload_current_scene()
 
 func _on_quit_pressed() -> void:
-	print("pressed quit")
-	button_click.play()
-	await button_click.finished
-	get_tree().paused = false
-	game_manager.go_to_main_menu()
+	if can_click_pause_menu:
+		print("pressed quit")
+		button_click.play()
+		await button_click.finished
+		get_tree().paused = false
+		game_manager.go_to_main_menu()
 
 func _ready():
 	animation_player.play("RESET")
