@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqljug5chpe06"]
+[gd_scene load_steps=19 format=3 uid="uid://cqljug5chpe06"]
 
 [ext_resource type="Texture2D" uid="uid://b4vyblvf8bv87" path="res://Blue.png" id="1_33q1k"]
 [ext_resource type="Texture2D" uid="uid://qdeimlgb6lef" path="res://pauline_ui.png" id="2_i7sy2"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b51cetopnmuqf" path="res://GUI.png" id="6_gdyqa"]
 [ext_resource type="Script" path="res://scenes/menu_button.gd" id="7_xt6rr"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="8_iph07"]
+[ext_resource type="AudioStream" uid="uid://4nl44ma1p56" path="res://button_click.mp3" id="9_xuikb"]
+[ext_resource type="AudioStream" uid="uid://dcrxcwy5oumvj" path="res://menu_screens.mp3" id="10_xffe6"]
 
 [sub_resource type="Animation" id="Animation_kuadm"]
 length = 0.001
@@ -78,6 +80,43 @@ region_rect = Rect2(145, 113, 46, 14)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i2l75"]
 texture = ExtResource("6_gdyqa")
 region_rect = Rect2(145, 98, 46, 13)
+
+[sub_resource type="Animation" id="Animation_pjw5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_music/bg_music_audio:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
+
+[sub_resource type="Animation" id="Animation_jm0be"]
+resource_name = "fade_sound"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_music/bg_music_audio:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qnqil"]
+_data = {
+"RESET": SubResource("Animation_pjw5x"),
+"fade_sound": SubResource("Animation_jm0be")
+}
 
 [node name="main_menu" type="Node"]
 script = ExtResource("8_iph07")
@@ -203,5 +242,22 @@ autowrap_mode = 2
 [node name="game_manager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_iph07")
+
+[node name="button_click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_xuikb")
+
+[node name="bg_music" type="Node" parent="."]
+process_mode = 3
+
+[node name="bg_music_audio" type="AudioStreamPlayer" parent="bg_music"]
+stream = ExtResource("10_xffe6")
+volume_db = -15.0
+autoplay = true
+
+[node name="background_audio_transition" type="AnimationPlayer" parent="bg_music"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qnqil")
+}
 
 [connection signal="pressed" from="menu_button" to="menu_button" method="_on_pressed"]

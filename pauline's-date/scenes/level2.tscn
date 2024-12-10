@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d1m6bh175iu43"]
+[gd_scene load_steps=23 format=3 uid="uid://d1m6bh175iu43"]
 
 [ext_resource type="PackedScene" uid="uid://cmvjn8xyum3yn" path="res://scenes/dialogue.tscn" id="1_b5pdu"]
 [ext_resource type="Texture2D" uid="uid://dg60t3rde1m4h" path="res://Terrain (16x16).png" id="2_412oi"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="12_kkjkr"]
 [ext_resource type="PackedScene" uid="uid://16lb62xnadel" path="res://scenes/scene_transition.tscn" id="14_fai4g"]
 [ext_resource type="PackedScene" uid="uid://txrr1iywh36m" path="res://scenes/derrick_npc.tscn" id="14_x2ybn"]
+[ext_resource type="AudioStream" uid="uid://bqjxohq27b88d" path="res://jazzy.mp3" id="16_cnmvv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n04t3"]
 texture = ExtResource("2_412oi")
@@ -222,6 +223,43 @@ shader_parameter/pattern = 2
 shader_parameter/inside = true
 shader_parameter/add_margins = true
 
+[sub_resource type="Animation" id="Animation_pjw5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_music/bg_music_audio:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
+
+[sub_resource type="Animation" id="Animation_jm0be"]
+resource_name = "fade_sound"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_music/bg_music_audio:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qnqil"]
+_data = {
+"RESET": SubResource("Animation_pjw5x"),
+"fade_sound": SubResource("Animation_jm0be")
+}
+
 [node name="Node" type="Node"]
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -413,3 +451,18 @@ script = ExtResource("12_kkjkr")
 
 [node name="derrick_npc" parent="." instance=ExtResource("14_x2ybn")]
 position = Vector2(2413, 528)
+
+[node name="bg_music" type="Node" parent="."]
+process_mode = 3
+
+[node name="bg_music_audio" type="AudioStreamPlayer" parent="bg_music"]
+process_mode = 3
+stream = ExtResource("16_cnmvv")
+volume_db = -15.0
+autoplay = true
+
+[node name="background_audio_transition" type="AnimationPlayer" parent="bg_music"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qnqil")
+}

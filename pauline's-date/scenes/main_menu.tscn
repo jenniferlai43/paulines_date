@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdsbxxv20160r"]
+[gd_scene load_steps=21 format=3 uid="uid://cdsbxxv20160r"]
 
 [ext_resource type="Texture2D" uid="uid://b4vyblvf8bv87" path="res://Blue.png" id="1_x8mvw"]
 [ext_resource type="Texture2D" uid="uid://jy7jjp6quuuy" path="res://Big Clouds.png" id="2_qhh5r"]
@@ -8,6 +8,10 @@
 [ext_resource type="StyleBox" uid="uid://dgyqwr1jijbxf" path="res://scenes/button_press.tres" id="5_s0s3p"]
 [ext_resource type="Script" path="res://scenes/start_button.gd" id="7_3uilq"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="8_3thyb"]
+[ext_resource type="AudioStream" uid="uid://4nl44ma1p56" path="res://button_click.mp3" id="9_85pw6"]
+[ext_resource type="PackedScene" uid="uid://dvlg2jgbg0d7x" path="res://scenes/pause_menu.tscn" id="10_phyld"]
+[ext_resource type="PackedScene" uid="uid://cmvjn8xyum3yn" path="res://scenes/dialogue.tscn" id="11_5xbpb"]
+[ext_resource type="AudioStream" uid="uid://dcrxcwy5oumvj" path="res://menu_screens.mp3" id="12_4khae"]
 
 [sub_resource type="Animation" id="Animation_kuadm"]
 length = 0.001
@@ -79,6 +83,43 @@ region_rect = Rect2(145, 113, 46, 14)
 texture = ExtResource("5_4gwd2")
 region_rect = Rect2(145, 98, 46, 13)
 
+[sub_resource type="Animation" id="Animation_pjw5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_music/bg_music_audio:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
+
+[sub_resource type="Animation" id="Animation_jm0be"]
+resource_name = "fade_sound"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_music/bg_music_audio:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qnqil"]
+_data = {
+"RESET": SubResource("Animation_pjw5x"),
+"fade_sound": SubResource("Animation_jm0be")
+}
+
 [node name="main_menu" type="Node"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -101,9 +142,9 @@ texture = ExtResource("4_nwgjy")
 [node name="clouds" type="TextureRect" parent="bottom_clouds"]
 texture_filter = 1
 offset_left = -1.0
-offset_top = 410.081
+offset_top = 414.0
 offset_right = 1182.0
-offset_bottom = 708.081
+offset_bottom = 712.0
 texture = ExtResource("2_qhh5r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="bottom_clouds"]
@@ -158,5 +199,50 @@ script = ExtResource("7_3uilq")
 [node name="game_manager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_3thyb")
+
+[node name="button_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_85pw6")
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("10_phyld")]
+z_index = 10
+
+[node name="dialogue" parent="UI" instance=ExtResource("11_5xbpb")]
+unique_name_in_owner = true
+
+[node name="Panel" type="Panel" parent="UI"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 275.0
+offset_bottom = 135.0
+
+[node name="PointsLabel" type="Label" parent="UI/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Flowers:  0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bg_music" type="Node" parent="."]
+process_mode = 3
+
+[node name="bg_music_audio" type="AudioStreamPlayer" parent="bg_music"]
+stream = ExtResource("12_4khae")
+volume_db = -15.0
+autoplay = true
+
+[node name="background_audio_transition" type="AnimationPlayer" parent="bg_music"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qnqil")
+}
 
 [connection signal="pressed" from="start_button" to="start_button" method="_on_pressed"]

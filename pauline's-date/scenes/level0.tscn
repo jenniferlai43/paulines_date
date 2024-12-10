@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://pai5rukfbmev"]
+[gd_scene load_steps=17 format=3 uid="uid://pai5rukfbmev"]
 
 [ext_resource type="PackedScene" uid="uid://cmvjn8xyum3yn" path="res://scenes/dialogue.tscn" id="1_8quk8"]
 [ext_resource type="Texture2D" uid="uid://godca5elcau" path="res://Green.png" id="2_palpe"]
 [ext_resource type="Texture2D" uid="uid://dg60t3rde1m4h" path="res://Terrain (16x16).png" id="3_p4iai"]
 [ext_resource type="PackedScene" uid="uid://bqjgref8eybub" path="res://scenes/main_char.tscn" id="4_f2rfl"]
+[ext_resource type="AudioStream" uid="uid://cpx072ckyi8rw" path="res://lower_pitch_coin_collect.mp3" id="6_kl08o"]
 [ext_resource type="PackedScene" uid="uid://bsq2kwmykot4l" path="res://scenes/tulip.tscn" id="6_sqggq"]
 [ext_resource type="PackedScene" uid="uid://drgin0xkju7vq" path="res://scenes/mc_npc.tscn" id="7_0q1lk"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="8_hpiau"]
 [ext_resource type="PackedScene" uid="uid://16lb62xnadel" path="res://scenes/scene_transition.tscn" id="9_f382q"]
 [ext_resource type="PackedScene" uid="uid://dvlg2jgbg0d7x" path="res://scenes/pause_menu.tscn" id="9_i0cvb"]
+[ext_resource type="AudioStream" uid="uid://dmtxcve3ljffd" path="res://level_music.mp3" id="11_un3y1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n04t3"]
 texture = ExtResource("3_p4iai")
@@ -182,6 +184,43 @@ physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_n04t3")
 
+[sub_resource type="Animation" id="Animation_pjw5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_music/bg_music_audio:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
+
+[sub_resource type="Animation" id="Animation_jm0be"]
+resource_name = "fade_sound"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_music/bg_music_audio:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qnqil"]
+_data = {
+"RESET": SubResource("Animation_pjw5x"),
+"fade_sound": SubResource("Animation_jm0be")
+}
+
 [node name="Node" type="Node"]
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -265,6 +304,10 @@ position = Vector2(1620, 521)
 [node name="Area2D10" parent="scene_objects/emerald_group" instance=ExtResource("6_sqggq")]
 position = Vector2(1979, 377)
 
+[node name="collect_sfx" type="AudioStreamPlayer" parent="scene_objects/emerald_group"]
+stream = ExtResource("6_kl08o")
+volume_db = -4.0
+
 [node name="mc" type="Node" parent="scene_objects"]
 
 [node name="mc_npc" parent="scene_objects/mc" instance=ExtResource("7_0q1lk")]
@@ -286,3 +329,17 @@ position_smoothing_speed = 7.0
 unique_name_in_owner = true
 process_mode = 3
 script = ExtResource("8_hpiau")
+
+[node name="bg_music" type="Node" parent="."]
+process_mode = 3
+
+[node name="bg_music_audio" type="AudioStreamPlayer" parent="bg_music"]
+stream = ExtResource("11_un3y1")
+volume_db = -15.0
+autoplay = true
+
+[node name="background_audio_transition" type="AnimationPlayer" parent="bg_music"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qnqil")
+}

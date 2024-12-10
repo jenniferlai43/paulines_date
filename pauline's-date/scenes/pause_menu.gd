@@ -4,6 +4,8 @@ extends Control
 @onready var root: Node = $"../.."
 @onready var game_manager: Node = %game_manager
 @onready var dialogue: CanvasLayer = %dialogue
+@onready var button_click: AudioStreamPlayer = $button_click
+
 
 func resume():
 	get_tree().paused = false
@@ -15,20 +17,38 @@ func pause():
 	animation_player.play("blur")
 	
 func testEsc():
+	if game_manager.is_cutscene:
+		# Cannot pause during a cutscene.
+		return
 	if Input.is_action_just_pressed("esc") && get_tree().paused == false:
+		print("pausing")
+		
+		button_click.play()
 		pause()
+		await button_click.finished
 	elif Input.is_action_just_pressed("esc") && get_tree().paused == true:
+		print("resuming")
+		button_click.play()
 		resume()
+		await button_click.finished
 	
-
 func _on_resume_pressed() -> void:
+	print("pressed resume")
+	button_click.play()
+	await button_click.finished
 	resume()
 	
 func _on_restart_pressed() -> void:
+	print("pressed restart")
+	button_click.play()
+	await button_click.finished
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_quit_pressed() -> void:
+	print("pressed quit")
+	button_click.play()
+	await button_click.finished
 	get_tree().paused = false
 	game_manager.go_to_main_menu()
 

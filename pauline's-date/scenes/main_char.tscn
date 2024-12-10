@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqjgref8eybub"]
+[gd_scene load_steps=26 format=3 uid="uid://bqjgref8eybub"]
 
 [ext_resource type="Script" path="res://scenes/main_char.gd" id="1_s7yv8"]
 [ext_resource type="Texture2D" uid="uid://dtt3pyeidl0du" path="res://pauline_idle.png" id="3_y8ejw"]
 [ext_resource type="Texture2D" uid="uid://cepagvmkia4io" path="res://pauline_jump.png" id="4_2mqdu"]
 [ext_resource type="Texture2D" uid="uid://cua7qq7886d1x" path="res://pauline_running.png" id="4_jfcpr"]
+[ext_resource type="AudioStream" uid="uid://cxbxklpmi841a" path="res://jump.mp3" id="5_sah4l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tvkl"]
 atlas = ExtResource("3_y8ejw")
@@ -162,3 +163,7 @@ autoplay = "pauline_idle"
 material = SubResource("ShaderMaterial_ash5g")
 position = Vector2(89.25, 547.75)
 shape = SubResource("RectangleShape2D_any3h")
+
+[node name="jump_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sah4l")
+volume_db = -10.0

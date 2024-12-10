@@ -3,6 +3,7 @@ extends Area2D
 @onready var game_manager: Node = %game_manager
 @onready var dialogue: CanvasLayer = %dialogue
 
+
 var lvl0_text_loop_idx = 0
 const LVL0_TEXT_LOOP_IDX_TO_TEXT = {
 	0: ["Pauline! You need to collect 10 flowers for your date!"],
@@ -36,8 +37,7 @@ func _lvl0_flowers_acquired_cutscene():
 		"I'm not sure if that's...",
 		"...",
 		"If you can get me 10 gold coins, I can make you a new dress!"].map(func(txt): return "Minh-Chau: %s" % txt))
-	await dialogue.drain_text_queue()
-	await get_tree().create_timer(2).timeout
+	await dialogue.drain_text_queue(2)
 	game_manager.end_cutscene()
 	game_manager.switch_to_level_1()
 	

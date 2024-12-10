@@ -8,11 +8,13 @@ extends CanvasLayer
 
 @onready var text: Label = $textbox_container/MarginContainer/HBoxContainer/Text
 
+@onready var talking_sound: AudioStreamPlayer = $talking_sound
+
+const CHAR_PER_SECOND = 50
 var text_queue = []
 
 func _ready():
 	hide_textbox()
-	#add_text("This text is going to be added!")
 	
 	
 func hide_textbox():
@@ -35,20 +37,26 @@ func show_textbox():
 func enqueue_text(text_arr):
 	text_queue.append_array(text_arr)
 
-func drain_text_queue():
+func drain_text_queue(sleep_in_seconds):
 	while not text_queue.is_empty():
 		await display_next_text()
+		await get_tree().create_timer(sleep_in_seconds).timeout
 
 func display_next_text():
 	if not text_queue.is_empty():
 		text.text = text_queue.pop_front()
 		text.visible_characters = 0
+		talking_sound.play(0)
 		show_textbox()
 		var tween = get_tree().create_tween()
-		print("starting")
-		await tween.tween_property(text, "visible_characters", 100, 2).from(0).finished
-		print("tween finished")
+		var text_left = text.text.length()
+		# Avoid division by 0.
+		var text_duration = text_left/CHAR_PER_SECOND
+		if text_duration == 0:
+			text_duration = 1
+		await tween.tween_property(text, "visible_characters", text_left, text_duration).from(0).finished
+		talking_sound.stop()
 	else:
 		# If no text is left, we can hide the textbox now.
+		print("no text left!")
 		hide_textbox()
-	print("display_next_text is finished")

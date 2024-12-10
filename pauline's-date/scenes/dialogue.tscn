@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmvjn8xyum3yn"]
+[gd_scene load_steps=5 format=3 uid="uid://cmvjn8xyum3yn"]
 
 [ext_resource type="Script" path="res://scenes/dialogue.gd" id="1_gxpk2"]
 [ext_resource type="FontFile" uid="uid://pmgc17ar6k85" path="res://Minecraft.ttf" id="2_jgcjj"]
+[ext_resource type="AudioStream" uid="uid://d0cpu6uu8f11t" path="res://pixel_talking_no_stops.mp3" id="3_dvpdr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbdil"]
 bg_color = Color(0, 0, 0, 1)
@@ -82,3 +83,7 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_jgcjj")
 theme_override_font_sizes/font_size = 30
 text = "[E] to exit"
+
+[node name="talking_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dvpdr")
+parameters/looping = true
