@@ -11,76 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://4nl44ma1p56" path="res://button_click.mp3" id="9_xuikb"]
 [ext_resource type="AudioStream" uid="uid://dcrxcwy5oumvj" path="res://menu_screens.mp3" id="10_xffe6"]
 
-[sub_resource type="Animation" id="Animation_kuadm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("clouds:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1, 414)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(189, 495)]
-}
-
-[sub_resource type="Animation" id="Animation_3ypr2"]
-resource_name = "up_down-loop"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("clouds:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.03333, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-1, 414), Vector2(-1, 353.25), Vector2(-1, 414)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.03333, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(189, 495), Vector2(189, 430.33), Vector2(189, 495)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7b0be"]
-_data = {
-"RESET": SubResource("Animation_kuadm"),
-"up_down-loop": SubResource("Animation_3ypr2")
-}
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1gon"]
-texture = ExtResource("6_gdyqa")
-region_rect = Rect2(145, 113, 46, 14)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i2l75"]
-texture = ExtResource("6_gdyqa")
-region_rect = Rect2(145, 98, 46, 13)
-
 [sub_resource type="Animation" id="Animation_pjw5x"]
 length = 0.001
 tracks/0/type = "value"
@@ -118,39 +48,84 @@ _data = {
 "fade_sound": SubResource("Animation_jm0be")
 }
 
+[sub_resource type="Animation" id="Animation_kuadm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("clouds:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 479.945)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(189, 495)]
+}
+
+[sub_resource type="Animation" id="Animation_3ypr2"]
+resource_name = "up_down-loop"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("clouds:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 650), Vector2(-1, 550), Vector2(-1, 650)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.03333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(189.025, 836), Vector2(189, 736), Vector2(189, 836)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7b0be"]
+_data = {
+"RESET": SubResource("Animation_kuadm"),
+"up_down-loop": SubResource("Animation_3ypr2")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1gon"]
+texture = ExtResource("6_gdyqa")
+region_rect = Rect2(145, 113, 46, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i2l75"]
+texture = ExtResource("6_gdyqa")
+region_rect = Rect2(145, 98, 46, 13)
+
 [node name="main_menu" type="Node"]
 script = ExtResource("8_iph07")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
-offset_left = -164.0
-offset_top = -23.0
-offset_right = 1491.0
-offset_bottom = 699.0
+offset_right = 1532.0
+offset_bottom = 1033.0
 texture = ExtResource("1_33q1k")
-
-[node name="bottom_clouds" type="Node" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="bottom_clouds"]
-z_index = 2
-texture_filter = 1
-position = Vector2(189, 495)
-scale = Vector2(5, 5)
-texture = ExtResource("2_i7sy2")
-
-[node name="clouds" type="TextureRect" parent="bottom_clouds"]
-texture_filter = 1
-offset_left = -1.0
-offset_top = 414.0
-offset_right = 1182.0
-offset_bottom = 712.0
-texture = ExtResource("3_dqx08")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="bottom_clouds"]
-libraries = {
-"": SubResource("AnimationLibrary_7b0be")
-}
-autoplay = "up_down-loop"
 
 [node name="gallery_text" type="Label" parent="."]
 anchors_preset = 8
@@ -159,9 +134,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -386.0
-offset_top = -299.0
+offset_top = -371.0
 offset_right = 384.0
-offset_bottom = -219.0
+offset_bottom = -291.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0.449859, 0.529278, 0.628025, 1)
@@ -172,29 +147,6 @@ text = "Thanks for Playing!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="menu_button" type="Button" parent="."]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -182.0
-offset_top = 157.0
-offset_right = 182.0
-offset_bottom = 299.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_qn1o8")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = ExtResource("5_pl6lu")
-theme_override_styles/hover_pressed = ExtResource("5_pl6lu")
-theme_override_styles/hover = ExtResource("5_pl6lu")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_c1gon")
-theme_override_styles/normal = SubResource("StyleBoxTexture_i2l75")
-text = "MAIN MENU"
-script = ExtResource("7_xt6rr")
-
 [node name="credits_page" type="Node" parent="."]
 
 [node name="gallery_text2" type="Label" parent="credits_page"]
@@ -204,9 +156,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -360.0
-offset_top = -223.0
+offset_top = -297.0
 offset_right = 404.0
-offset_bottom = -153.0
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0.591257, 0.672378, 0.725963, 1)
@@ -223,9 +175,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -358.0
-offset_top = -146.0
+offset_top = -227.0
 offset_right = 382.0
-offset_bottom = 239.0
+offset_bottom = 158.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0.591257, 0.672378, 0.725963, 1)
@@ -235,6 +187,8 @@ theme_override_font_sizes/font_size = 35
 text = "- Minh-Chau for organizing this event!
 - Kim for suggesting the ending gallery scene!
 - Duyen for character sprite critique!
+- Benson for beta testing and finding 5+
+bugs!
 
 Happy Birthday Pauline :)"
 autowrap_mode = 2
@@ -259,5 +213,52 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_qnqil")
 }
+
+[node name="bottom_clouds" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="bottom_clouds"]
+z_index = 2
+texture_filter = 1
+position = Vector2(189, 495)
+scale = Vector2(5, 5)
+texture = ExtResource("2_i7sy2")
+
+[node name="clouds" type="TextureRect" parent="bottom_clouds"]
+texture_filter = 1
+offset_left = -1.0
+offset_top = 479.945
+offset_right = 1772.0
+offset_bottom = 988.945
+texture = ExtResource("3_dqx08")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bottom_clouds"]
+libraries = {
+"": SubResource("AnimationLibrary_7b0be")
+}
+autoplay = "up_down-loop"
+
+[node name="menu_button" type="Button" parent="."]
+z_index = 4096
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = 157.0
+offset_right = 182.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_qn1o8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover_pressed = ExtResource("5_pl6lu")
+theme_override_styles/hover = ExtResource("5_pl6lu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_c1gon")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i2l75")
+text = "MAIN MENU"
+script = ExtResource("7_xt6rr")
 
 [connection signal="pressed" from="menu_button" to="menu_button" method="_on_pressed"]

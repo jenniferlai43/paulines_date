@@ -20,6 +20,13 @@ config/icon="res://icon.svg"
 PlayerState="*res://scenes/player_state.gd"
 SceneTransition="*res://scenes/scene_transition.tscn"
 
+[display]
+
+window/size/viewport_width=1512
+window/size/viewport_height=982
+window/size/resizable=false
+window/dpi/allow_hidpi=false
+
 [input]
 
 left={

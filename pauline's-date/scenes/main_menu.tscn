@@ -25,7 +25,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1, 414)]
+"values": [Vector2(-1, 479.945)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -54,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.03333, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-1, 414), Vector2(-1, 353.25), Vector2(-1, 414)]
+"values": [Vector2(-1, 650), Vector2(-1, 550), Vector2(-1, 650)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -66,7 +66,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.03333, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(189, 495), Vector2(189, 430.33), Vector2(189, 495)]
+"values": [Vector2(189.025, 836), Vector2(189, 736), Vector2(189, 836)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7b0be"]
@@ -124,10 +124,11 @@ _data = {
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
-offset_left = -164.0
-offset_top = -23.0
-offset_right = 1491.0
-offset_bottom = 699.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_x8mvw")
 
 [node name="bottom_clouds" type="Node" parent="."]
@@ -142,9 +143,9 @@ texture = ExtResource("4_nwgjy")
 [node name="clouds" type="TextureRect" parent="bottom_clouds"]
 texture_filter = 1
 offset_left = -1.0
-offset_top = 414.0
-offset_right = 1182.0
-offset_bottom = 712.0
+offset_top = 650.0
+offset_right = 1772.0
+offset_bottom = 1159.0
 texture = ExtResource("2_qhh5r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="bottom_clouds"]
