@@ -63,7 +63,7 @@ animations = [{
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qysln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkmsa"]
-size = Vector2(64, 86)
+size = Vector2(68, 271)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ackhk"]
 size = Vector2(99, 231.5)
@@ -85,7 +85,7 @@ flip_h = true
 physics_material_override = SubResource("PhysicsMaterial_qysln")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-4, 1)
+position = Vector2(-6, -91.5)
 shape = SubResource("RectangleShape2D_vkmsa")
 
 [node name="CollisionShape2D" type="Area2D" parent="."]
